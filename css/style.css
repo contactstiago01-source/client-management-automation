@@ -1,6 +1,6 @@
 /* =====================================================
    CLIENT MANAGEMENT AUTOMATION
-   Main Application Styles
+   Professional Blue Dashboard UI
    ===================================================== */
 
 
@@ -10,9 +10,9 @@
 
 :root {
 
-    /* Colors */
+    /* Core Colors */
 
-    --color-background: #f4f7fb;
+    --color-background: #f1f5f9;
 
     --color-surface: #ffffff;
 
@@ -20,13 +20,30 @@
 
     --color-primary: #2563eb;
 
+    --color-primary-light: #eff6ff;
+
     --color-primary-dark: #1d4ed8;
 
-    --color-text-primary: #172033;
+    --color-primary-deep: #1e3a8a;
+
+
+    /* Text */
+
+    --color-text-primary: #0f172a;
 
     --color-text-secondary: #64748b;
 
+    --color-text-muted: #94a3b8;
+
+
+    /* Borders */
+
     --color-border: #e2e8f0;
+
+    --color-border-light: #f1f5f9;
+
+
+    /* Status */
 
     --color-success: #16a34a;
 
@@ -57,20 +74,26 @@
 
     --container-width: 1400px;
 
-    --border-radius-small: 8px;
 
-    --border-radius-medium: 14px;
+    /* Radius */
 
-    --border-radius-large: 20px;
+    --radius-small: 10px;
+
+    --radius-medium: 16px;
+
+    --radius-large: 22px;
 
 
     /* Shadows */
 
     --shadow-small:
-        0 2px 8px rgba(15, 23, 42, 0.05);
+        0 4px 14px rgba(15, 23, 42, 0.05);
 
     --shadow-medium:
-        0 10px 30px rgba(15, 23, 42, 0.08);
+        0 12px 32px rgba(15, 23, 42, 0.08);
+
+    --shadow-blue:
+        0 12px 28px rgba(37, 99, 235, 0.18);
 
 }
 
@@ -101,7 +124,13 @@ body {
 
     min-height: 100vh;
 
-    background: var(--color-background);
+    background:
+
+        linear-gradient(
+            180deg,
+            #f8fbff 0%,
+            var(--color-background) 100%
+        );
 
     color: var(--color-text-primary);
 
@@ -118,32 +147,66 @@ body {
 
 .app-header {
 
+    position: relative;
+
+    overflow: hidden;
+
     background:
 
         linear-gradient(
             135deg,
-            #111827 0%,
-            #1e293b 100%
+            #0f172a 0%,
+            #172554 45%,
+            #1d4ed8 100%
         );
 
     color: #ffffff;
 
     box-shadow:
 
-        0 4px 20px rgba(15, 23, 42, 0.18);
+        0 8px 30px rgba(15, 23, 42, 0.22);
+
+}
+
+
+.app-header::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 420px;
+
+    height: 420px;
+
+    right: -160px;
+
+    top: -220px;
+
+    border-radius: 50%;
+
+    background:
+
+        rgba(96, 165, 250, 0.16);
+
+    pointer-events: none;
 
 }
 
 
 .header-content {
 
+    position: relative;
+
+    z-index: 1;
+
     max-width: var(--container-width);
 
-    min-height: 110px;
+    min-height: 120px;
 
     margin: 0 auto;
 
-    padding: 24px 32px;
+    padding: 28px 32px;
 
     display: flex;
 
@@ -156,13 +219,62 @@ body {
 }
 
 
+.brand {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 16px;
+
+}
+
+
+.brand-icon {
+
+    width: 54px;
+
+    height: 54px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 16px;
+
+    background:
+
+        rgba(255, 255, 255, 0.14);
+
+    border:
+
+        1px solid rgba(255, 255, 255, 0.22);
+
+    box-shadow:
+
+        0 8px 20px rgba(0, 0, 0, 0.16);
+
+}
+
+
+.brand-icon svg {
+
+    width: 28px;
+
+    height: 28px;
+
+    stroke: #bfdbfe;
+
+}
+
+
 .brand h1 {
 
     font-size: 1.7rem;
 
-    font-weight: 700;
+    font-weight: 750;
 
-    letter-spacing: -0.03em;
+    letter-spacing: -0.035em;
 
 }
 
@@ -171,18 +283,41 @@ body {
 
     margin-top: 4px;
 
-    color: #94a3b8;
+    color: #bfdbfe;
 
-    font-size: 0.92rem;
+    font-size: 0.9rem;
 
 }
 
 
 .header-info {
 
-    color: #cbd5e1;
+    display: flex;
 
-    font-size: 0.9rem;
+    align-items: center;
+
+    gap: 9px;
+
+    color: #dbeafe;
+
+    font-size: 0.88rem;
+
+}
+
+
+.header-status-dot {
+
+    width: 9px;
+
+    height: 9px;
+
+    border-radius: 50%;
+
+    background: #4ade80;
+
+    box-shadow:
+
+        0 0 0 5px rgba(74, 222, 128, 0.14);
 
 }
 
@@ -194,13 +329,16 @@ body {
 .container {
 
     width: min(
+
         100% - 40px,
+
         var(--container-width)
+
     );
 
     margin: 0 auto;
 
-    padding: 40px 0 64px;
+    padding: 42px 0 70px;
 
 }
 
@@ -226,16 +364,18 @@ body {
 
 .section-header h2 {
 
-    font-size: 1.35rem;
+    font-size: 1.4rem;
 
-    letter-spacing: -0.02em;
+    font-weight: 750;
+
+    letter-spacing: -0.03em;
 
 }
 
 
 .section-header p {
 
-    margin-top: 4px;
+    margin-top: 5px;
 
     color: var(--color-text-secondary);
 
@@ -250,7 +390,7 @@ body {
 
 .dashboard-section {
 
-    margin-bottom: 44px;
+    margin-bottom: 46px;
 
 }
 
@@ -273,7 +413,11 @@ body {
 
 .dashboard-card {
 
-    min-height: 150px;
+    position: relative;
+
+    overflow: hidden;
+
+    min-height: 158px;
 
     padding: 24px;
 
@@ -281,7 +425,7 @@ body {
 
     border: 1px solid var(--color-border);
 
-    border-radius: var(--border-radius-medium);
+    border-radius: var(--radius-medium);
 
     box-shadow: var(--shadow-small);
 
@@ -293,48 +437,102 @@ body {
 
     transition:
 
-        transform 0.2s ease,
+        transform 0.25s ease,
 
-        box-shadow 0.2s ease;
+        box-shadow 0.25s ease,
+
+        border-color 0.25s ease;
+
+}
+
+
+.dashboard-card::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 110px;
+
+    height: 110px;
+
+    right: -45px;
+
+    bottom: -50px;
+
+    border-radius: 50%;
+
+    background:
+
+        var(--color-primary-light);
 
 }
 
 
 .dashboard-card:hover {
 
-    transform: translateY(-4px);
+    transform: translateY(-5px);
 
-    box-shadow: var(--shadow-medium);
+    border-color: #bfdbfe;
+
+    box-shadow: var(--shadow-blue);
 
 }
 
 
 .card-icon {
 
-    width: 54px;
+    position: relative;
 
-    height: 54px;
+    z-index: 1;
+
+    width: 58px;
+
+    height: 58px;
+
+    flex-shrink: 0;
 
     display: grid;
 
     place-items: center;
 
-    border-radius: 14px;
+    border-radius: 16px;
 
-    background: var(--color-surface-soft);
+    background:
 
-    font-size: 1.55rem;
+        linear-gradient(
+            135deg,
+            #eff6ff,
+            #dbeafe
+        );
+
+    color: var(--color-primary);
+
+}
+
+
+.card-icon svg {
+
+    width: 27px;
+
+    height: 27px;
+
+    stroke-width: 2;
 
 }
 
 
 .card-content {
 
+    position: relative;
+
+    z-index: 1;
+
     display: flex;
 
     flex-direction: column;
 
-    gap: 5px;
+    gap: 6px;
 
 }
 
@@ -343,20 +541,22 @@ body {
 
     color: var(--color-text-secondary);
 
-    font-size: 0.85rem;
+    font-size: 0.82rem;
 
-    font-weight: 500;
+    font-weight: 600;
 
 }
 
 
 .card-content strong {
 
-    font-size: 2rem;
+    color: var(--color-text-primary);
+
+    font-size: 2.15rem;
 
     line-height: 1;
 
-    letter-spacing: -0.04em;
+    letter-spacing: -0.05em;
 
 }
 
@@ -367,13 +567,13 @@ body {
 
 .client-management-section {
 
-    padding: 28px;
+    padding: 30px;
 
     background: var(--color-surface);
 
     border: 1px solid var(--color-border);
 
-    border-radius: var(--border-radius-large);
+    border-radius: var(--radius-large);
 
     box-shadow: var(--shadow-small);
 
@@ -384,78 +584,15 @@ body {
    8. BUTTONS
    ===================================================== */
 
-.primary-button {
-
-    border: none;
-
-    border-radius: var(--border-radius-small);
-
-    padding: 11px 18px;
-
-    background: var(--color-primary);
-
-    color: #ffffff;
-
-    font-family: inherit;
-
-    font-size: 0.9rem;
-
-    font-weight: 600;
-
-    cursor: pointer;
-
-    transition:
-
-        background 0.2s ease,
-
-        transform 0.2s ease,
-
-        box-shadow 0.2s ease;
-
-}
-
-
-.primary-button:hover {
-
-    background: var(--color-primary-dark);
-
-    transform: translateY(-1px);
-
-    box-shadow:
-
-        0 6px 14px rgba(37, 99, 235, 0.25);
-
-}
-
-
-.primary-button:active {
-
-    transform: translateY(0);
-
-}
-
-
-/* =====================================================
-   9. ACTION BUTTON
-   ===================================================== */
+.primary-button,
 
 .action-button {
 
-    padding: 7px 12px;
-
-    border: 1px solid var(--color-border);
-
-    border-radius: 6px;
-
-    background: var(--color-surface);
-
-    color: var(--color-text-secondary);
+    border: none;
 
     font-family: inherit;
 
-    font-size: 0.8rem;
-
-    font-weight: 600;
+    font-weight: 650;
 
     cursor: pointer;
 
@@ -465,25 +602,50 @@ body {
 
         color 0.2s ease,
 
-        border-color 0.2s ease,
+        transform 0.2s ease,
 
-        transform 0.2s ease;
+        box-shadow 0.2s ease;
 
 }
 
 
-.action-button:hover {
+.primary-button {
 
-    background: var(--color-primary);
+    padding: 12px 20px;
 
-    border-color: var(--color-primary);
+    border-radius: var(--radius-small);
+
+    background:
+
+        linear-gradient(
+            135deg,
+            var(--color-primary),
+            var(--color-primary-dark)
+        );
 
     color: #ffffff;
 
-    transform: translateY(-1px);
+    font-size: 0.9rem;
+
+    box-shadow:
+
+        0 6px 14px rgba(37, 99, 235, 0.18);
 
 }
 
+
+.primary-button:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+
+        0 10px 22px rgba(37, 99, 235, 0.28);
+
+}
+
+
+.primary-button:active,
 
 .action-button:active {
 
@@ -492,25 +654,36 @@ body {
 }
 
 
-/* =====================================================
-   10. ACCESSIBILITY FOCUS STATES
-   ===================================================== */
+.action-button {
 
-button:focus-visible,
+    padding: 8px 14px;
 
-input:focus-visible,
+    border-radius: 8px;
 
-select:focus-visible {
+    background: var(--color-primary-light);
 
-    outline: 3px solid rgba(37, 99, 235, 0.25);
+    color: var(--color-primary-dark);
 
-    outline-offset: 2px;
+    font-size: 0.78rem;
+
+}
+
+
+.action-button:hover {
+
+    background: var(--color-primary);
+
+    color: #ffffff;
+
+    box-shadow:
+
+        0 5px 12px rgba(37, 99, 235, 0.2);
 
 }
 
 
 /* =====================================================
-   11. FILTERS
+   9. FILTERS
    ===================================================== */
 
 .filters {
@@ -527,13 +700,19 @@ select:focus-visible {
 
     margin-bottom: 24px;
 
-    padding: 18px;
+    padding: 20px;
 
-    background: var(--color-surface-soft);
+    background:
+
+        linear-gradient(
+            135deg,
+            #f8fbff,
+            #f1f5f9
+        );
 
     border: 1px solid var(--color-border);
 
-    border-radius: var(--border-radius-medium);
+    border-radius: var(--radius-medium);
 
 }
 
@@ -557,13 +736,13 @@ select:focus-visible {
 
     color: var(--color-text-secondary);
 
-    font-size: 0.78rem;
+    font-size: 0.75rem;
 
-    font-weight: 600;
+    font-weight: 700;
 
     text-transform: uppercase;
 
-    letter-spacing: 0.05em;
+    letter-spacing: 0.06em;
 
 }
 
@@ -574,9 +753,9 @@ select {
 
     width: 100%;
 
-    min-height: 44px;
+    min-height: 46px;
 
-    padding: 0 13px;
+    padding: 0 14px;
 
     background: var(--color-surface);
 
@@ -584,7 +763,7 @@ select {
 
     border: 1px solid var(--color-border);
 
-    border-radius: var(--border-radius-small);
+    border-radius: var(--radius-small);
 
     outline: none;
 
@@ -596,7 +775,18 @@ select {
 
         border-color 0.2s ease,
 
-        box-shadow 0.2s ease;
+        box-shadow 0.2s ease,
+
+        background 0.2s ease;
+
+}
+
+
+input:hover,
+
+select:hover {
+
+    border-color: #bfdbfe;
 
 }
 
@@ -605,17 +795,19 @@ input:focus,
 
 select:focus {
 
+    background: #ffffff;
+
     border-color: var(--color-primary);
 
     box-shadow:
 
-        0 0 0 3px rgba(37, 99, 235, 0.12);
+        0 0 0 4px rgba(37, 99, 235, 0.12);
 
 }
 
 
 /* =====================================================
-   12. TABLE
+   10. TABLE
    ===================================================== */
 
 .table-container {
@@ -623,6 +815,10 @@ select:focus {
     width: 100%;
 
     overflow-x: auto;
+
+    border: 1px solid var(--color-border);
+
+    border-radius: var(--radius-medium);
 
 }
 
@@ -640,37 +836,43 @@ table {
 
 thead {
 
-    background: var(--color-surface-soft);
+    background:
+
+        linear-gradient(
+            135deg,
+            #eff6ff,
+            #f8fafc
+        );
 
 }
 
 
 th {
 
-    padding: 15px 16px;
+    padding: 16px;
 
     color: var(--color-text-secondary);
 
     border-bottom: 1px solid var(--color-border);
 
-    font-size: 0.75rem;
+    font-size: 0.73rem;
 
-    font-weight: 700;
+    font-weight: 750;
 
     text-align: left;
 
     text-transform: uppercase;
 
-    letter-spacing: 0.04em;
+    letter-spacing: 0.05em;
 
 }
 
 
 td {
 
-    padding: 17px 16px;
+    padding: 18px 16px;
 
-    border-bottom: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border-light);
 
     color: var(--color-text-primary);
 
@@ -681,22 +883,40 @@ td {
 
 tbody tr {
 
+    background: #ffffff;
+
     transition:
 
-        background 0.2s ease;
+        background 0.2s ease,
+
+        box-shadow 0.2s ease;
+
+}
+
+
+tbody tr:last-child td {
+
+    border-bottom: none;
 
 }
 
 
 tbody tr:hover {
 
-    background: #f8fafc;
+    background: #f8fbff;
+
+}
+
+
+td strong {
+
+    font-weight: 700;
 
 }
 
 
 /* =====================================================
-   13. STATUS BADGES
+   11. STATUS BADGES
    ===================================================== */
 
 .status-badge {
@@ -705,13 +925,28 @@ tbody tr:hover {
 
     align-items: center;
 
-    padding: 5px 10px;
+    gap: 7px;
+
+    padding: 6px 11px;
 
     border-radius: 999px;
 
-    font-size: 0.75rem;
+    font-size: 0.74rem;
 
-    font-weight: 700;
+    font-weight: 750;
+
+}
+
+
+.status-badge::before {
+
+    content: "";
+
+    width: 7px;
+
+    height: 7px;
+
+    border-radius: 50%;
 
 }
 
@@ -725,11 +960,25 @@ tbody tr:hover {
 }
 
 
+.status-active::before {
+
+    background: var(--color-success);
+
+}
+
+
 .status-expiring {
 
     background: var(--color-warning-background);
 
     color: var(--color-warning);
+
+}
+
+
+.status-expiring::before {
+
+    background: var(--color-warning);
 
 }
 
@@ -743,13 +992,20 @@ tbody tr:hover {
 }
 
 
+.status-expired::before {
+
+    background: var(--color-danger);
+
+}
+
+
 /* =====================================================
-   14. EMPTY STATE
+   12. EMPTY STATE
    ===================================================== */
 
 .empty-state {
 
-    padding: 64px 24px;
+    padding: 70px 24px;
 
     text-align: center;
 
@@ -760,7 +1016,7 @@ tbody tr:hover {
 
     margin-bottom: 8px;
 
-    font-size: 1.05rem;
+    font-size: 1.08rem;
 
 }
 
@@ -775,14 +1031,20 @@ tbody tr:hover {
 
 
 /* =====================================================
-   15. FOOTER
+   13. FOOTER
    ===================================================== */
 
 .app-footer {
 
-    padding: 28px 20px;
+    padding: 30px 20px;
 
-    background: #111827;
+    background:
+
+        linear-gradient(
+            135deg,
+            #0f172a,
+            #172554
+        );
 
     color: #94a3b8;
 
@@ -801,7 +1063,24 @@ tbody tr:hover {
 
 
 /* =====================================================
-   16. RESPONSIVE DESIGN
+   14. ACCESSIBILITY
+   ===================================================== */
+
+button:focus-visible,
+
+input:focus-visible,
+
+select:focus-visible {
+
+    outline: 3px solid rgba(59, 130, 246, 0.35);
+
+    outline-offset: 3px;
+
+}
+
+
+/* =====================================================
+   15. RESPONSIVE DESIGN
    ===================================================== */
 
 @media (max-width: 1050px) {
@@ -835,7 +1114,7 @@ tbody tr:hover {
 
         flex-direction: column;
 
-        gap: 14px;
+        gap: 18px;
 
     }
 
@@ -843,6 +1122,13 @@ tbody tr:hover {
     .brand h1 {
 
         font-size: 1.4rem;
+
+    }
+
+
+    .header-info {
+
+        font-size: 0.8rem;
 
     }
 
@@ -857,7 +1143,7 @@ tbody tr:hover {
 
         );
 
-        padding-top: 24px;
+        padding-top: 26px;
 
     }
 
@@ -869,11 +1155,18 @@ tbody tr:hover {
     }
 
 
+    .dashboard-card {
+
+        min-height: 135px;
+
+    }
+
+
     .client-management-section {
 
         padding: 18px;
 
-        border-radius: var(--border-radius-medium);
+        border-radius: var(--radius-medium);
 
     }
 
