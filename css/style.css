@@ -436,7 +436,81 @@ body {
 
 
 /* =====================================================
-   9. FILTERS
+   9. ACTION BUTTON
+   ===================================================== */
+
+.action-button {
+
+    padding: 7px 12px;
+
+    border: 1px solid var(--color-border);
+
+    border-radius: 6px;
+
+    background: var(--color-surface);
+
+    color: var(--color-text-secondary);
+
+    font-family: inherit;
+
+    font-size: 0.8rem;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+
+        background 0.2s ease,
+
+        color 0.2s ease,
+
+        border-color 0.2s ease,
+
+        transform 0.2s ease;
+
+}
+
+
+.action-button:hover {
+
+    background: var(--color-primary);
+
+    border-color: var(--color-primary);
+
+    color: #ffffff;
+
+    transform: translateY(-1px);
+
+}
+
+
+.action-button:active {
+
+    transform: translateY(0);
+
+}
+
+
+/* =====================================================
+   10. ACCESSIBILITY FOCUS STATES
+   ===================================================== */
+
+button:focus-visible,
+
+input:focus-visible,
+
+select:focus-visible {
+
+    outline: 3px solid rgba(37, 99, 235, 0.25);
+
+    outline-offset: 2px;
+
+}
+
+
+/* =====================================================
+   11. FILTERS
    ===================================================== */
 
 .filters {
@@ -541,7 +615,7 @@ select:focus {
 
 
 /* =====================================================
-   10. TABLE
+   12. TABLE
    ===================================================== */
 
 .table-container {
@@ -622,7 +696,7 @@ tbody tr:hover {
 
 
 /* =====================================================
-   11. STATUS BADGES
+   13. STATUS BADGES
    ===================================================== */
 
 .status-badge {
@@ -670,7 +744,7 @@ tbody tr:hover {
 
 
 /* =====================================================
-   12. EMPTY STATE
+   14. EMPTY STATE
    ===================================================== */
 
 .empty-state {
@@ -701,7 +775,7 @@ tbody tr:hover {
 
 
 /* =====================================================
-   13. FOOTER
+   15. FOOTER
    ===================================================== */
 
 .app-footer {
@@ -727,7 +801,7 @@ tbody tr:hover {
 
 
 /* =====================================================
-   14. RESPONSIVE DESIGN
+   16. RESPONSIVE DESIGN
    ===================================================== */
 
 @media (max-width: 1050px) {
